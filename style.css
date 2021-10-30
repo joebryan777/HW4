@@ -1,0 +1,39 @@
+body {
+    background-color: #3fad83;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300e6ef' fill-opacity='1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  button {
+    background-color: #1894b9; 
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+  }
+  button:hover{
+
+    background-color: #20b5e2; 
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+
+  }
+
+  header{
+    margin: 20px;
+    width: 200%;
+    color: ghostwhite;
+    font-family: 'Oswald', sans-serif;
+    
+  }
+
+  label{
+    
+    color: ghostwhite;
+    font-family: 'Oswald', sans-serif;
+    
+  }
+  i{
+    color: ghostwhite; 
+  }

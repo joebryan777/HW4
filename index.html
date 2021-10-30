@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Password Encrypter</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.js"></script>
+    
+
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <div>
+        <h1>Password Encrypter</h1>
+        <h2>Password:</h2>
+        <input type="text" id="input" placeholder="Type String" />
+        <button class="button" type="button" id="enter" onclick="encrypt();">Submit</button>
+        <h3>AES Encrypted:<span id="aes"></span></h3>
+        <h3>SHA1 Encrypted:</h3><p id="sha1"></p>
+        <h3>SHA224 Encrypted:</h3><p id="sha224"></p>
+        <h3>SHA256 Encrypted:</h3><p id="sha256"></p>
+        <h4>Binary to Decimal</h4>
+        <input type="text" id="binaryConv" placeholder="Binary" />
+        <button class="button" type="button" id="binaryButton" onclick="binary2Decimal();">B2D</button>
+        <br/><p id="b2dResult"></p>
+
+        <h4>Decimal to Binary</h4>
+        <input type="text" id="decimalConv" placeholder="Decimal" />
+        <button class="button" type="button" id="decimalButton" onclick="decimal2Binary();">D2B</button><p id="d2bResult"></p>
+    </div>
+
+
+    <script>
+
+        function encrypt() {
+            let text = document.getElementById("input").value;
+            if (isEmpty(text)) {
+                return;
+            }
+            let pswrd = "discrete";
+            document.getElementById("aes").innerHTML = CryptoJS.AES.encrypt(text, pswrd);
+            document.getElementById("sha1").innerHTML = CryptoJS.SHA1(text);
+            document.getElementById("sha224").innerHTML = CryptoJS.SHA224(text);
+            document.getElementById("sha256").innerHTML = CryptoJS.SHA256(text);
+
+        }
+        function decimal2Binary() {
+            let userInput = document.getElementById("decimalConv").value;
+            if (isEmpty(userInput)) {
+                return;
+            }
+            userInput = parseInt(userInput);
+            let binary = "";
+            while (userInput >= 1) {
+                binary += (userInput % 2).toString();
+                userInput = Math.floor(userInput / 2);
+            }
+            document.getElementById("d2bResult").innerHTML = reverseString(binary);
+        }
+
+        function binary2Decimal() {
+            let userInput = document.getElementById("binaryConv").value;
+            if (isEmpty(userInput)) {
+                return;
+            }
+
+            let exp = userInput.length - 1;
+            var e = 0;
+            var sum = 0;
+            for (var i = 0; i < userInput.length; i++) {
+                e = parseInt(userInput.charAt(i));
+                sum += e * Math.pow(2, exp);
+                exp--;
+            }
+            document.getElementById("b2dResult").innerHTML = sum.toString();
+        }
+
+        function reverseString(reversed) {
+            let newString = "";
+            for (var i = reversed.length - 1; i >= 0; i--) {
+                newString += reversed.charAt(i);
+            }
+            return newString;
+        }
+
+        function isEmpty(input) {
+            if (input == "" || input == null) {
+                alert("Please type something in the input box.");
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
